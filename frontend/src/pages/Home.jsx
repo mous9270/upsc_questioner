@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import Spinner from '../components/Spinner.jsx';
 
 function Home() {
@@ -47,24 +46,38 @@ function Home() {
   }
 
   return (
-    <div>
-      <div>
-        <h2>Question Quiz</h2>
-        <p>Question: {questions[currentQuestionIndex].question}</p>
-        <p>Publish Year: {questions[currentQuestionIndex].publishYear}</p>
-        <div>
-          <label>
-            Answer:
-            <input
-              type="text"
-              value={userAnswer}
-              onChange={(e) => setUserAnswer(e.target.value)}
-            />
-          </label>
+    <div
+      className="bg-cover bg-center min-h-screen flex items-center justify-center"
+      style={{ backgroundImage: 'url("/background_image.png")' }}
+    >
+      <div className="bg-white bg-opacity-75 p-8 rounded-lg shadow-md max-w-lg w-full text-center">
+        <h1 className="text-3xl font-bold mb-4">UPSCQuestions</h1>
+        <h2 className="text-2xl font-semibold mb-2">Question</h2>
+        <p className="text-gray-700 mb-4">{questions[currentQuestionIndex].question}</p>
+        <div className="mb-4">
+          <input
+            type="text"
+            value={userAnswer}
+            onChange={(e) => setUserAnswer(e.target.value)}
+            className="border border-gray-300 p-2 w-full rounded"
+            placeholder="Answer"
+          />
         </div>
-        <button onClick={handleSubmit}>Submit</button>
-        <button onClick={handleNext}>Next</button>
-        {feedback && <p>{feedback}</p>}
+        <div className="flex justify-center space-x-4">
+          <button
+            onClick={handleSubmit}
+            className="bg-blue-500 text-white px-4 py-2 rounded-full shadow hover:bg-blue-600 focus:outline-none"
+          >
+            Submit
+          </button>
+          <button
+            onClick={handleNext}
+            className="bg-gray-500 text-white px-4 py-2 rounded-full shadow hover:bg-gray-600 focus:outline-none"
+          >
+            Next
+          </button>
+        </div>
+        {feedback && <p className="mt-4 text-lg">{feedback}</p>}
       </div>
     </div>
   );
