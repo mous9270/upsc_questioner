@@ -12,7 +12,7 @@ function Home() {
   useEffect(() => {
     setLoading(true);
     axios
-      .get('http://localhost:5555/questions')
+      .get('https://upsc-questioner-backend.onrender.com/questions')
       .then((res) => {
         setQuestions(res.data.data);
         setLoading(false);
