@@ -12,7 +12,7 @@ function Home() {
   useEffect(() => {
     setLoading(true);
     axios
-      .get('http://localhost:5555/questions')
+      .get('https://upsc-questioner-backend.onrender.com/questions')
       .then((res) => {
         setQuestions(res.data.data);
         setLoading(false);
@@ -47,10 +47,11 @@ function Home() {
 
   return (
     <div
-      className="bg-cover bg-center min-h-screen flex items-center justify-center"
-      style={{ backgroundImage: 'url("/background_image.png")' }}
+      className="relative bg-cover bg-center min-h-screen flex items-center justify-center"
+      style={{ backgroundImage: 'url("/background_image.jpg")' }}
     >
-      <div className="bg-white bg-opacity-75 p-8 rounded-lg shadow-md max-w-lg w-full text-center">
+      <div className="absolute inset-0 bg-black opacity-50"></div> {/* Dark overlay */}
+      <div className="relative bg-white bg-opacity-75 p-8 rounded-lg shadow-md max-w-lg w-full text-center">
         <h1 className="text-3xl font-bold mb-4">UPSCQuestions</h1>
         <h2 className="text-2xl font-semibold mb-2">Question</h2>
         <p className="text-gray-700 mb-4">{questions[currentQuestionIndex].question}</p>
@@ -66,13 +67,13 @@ function Home() {
         <div className="flex justify-center space-x-4">
           <button
             onClick={handleSubmit}
-            className="bg-blue-500 text-white px-4 py-2 rounded-full shadow hover:bg-blue-600 focus:outline-none"
+            className="bg-blue-500 text-white px-6 py-2 rounded-full shadow hover:bg-blue-600 focus:outline-none"
           >
             Submit
           </button>
           <button
             onClick={handleNext}
-            className="bg-gray-500 text-white px-4 py-2 rounded-full shadow hover:bg-gray-600 focus:outline-none"
+            className="bg-gray-500 text-white px-6 py-2 rounded-full shadow hover:bg-gray-600 focus:outline-none"
           >
             Next
           </button>
